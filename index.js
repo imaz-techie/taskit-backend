@@ -28,16 +28,19 @@ mongoose
 const app = express()
 
 // Middleware to handle cors
-// app.use(
-//   cors({
-//     origin: process.env.FRONT_END_URL || "http://localhost:5173",
-//     credentials: true,
-//   })
-// )
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONT_END_URL, 
+]
+
 app.use(
   cors({
-    origin: true,            
-    credentials: true,      
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true)
+      if (allowedOrigins.includes(origin)) return callback(null, true)
+      return callback(new Error("CORS blocked this origin"), false)
+    },
+    credentials: true,
   })
 )
 
