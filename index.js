@@ -34,6 +34,12 @@ const app = express()
 //     credentials: true,
 //   })
 // )
+app.use(
+  cors({
+    origin: true,            
+    credentials: true,      
+  })
+)
 
 // Middleware to handle JSON object in req body
 app.use(express.json())
