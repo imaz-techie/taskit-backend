@@ -28,12 +28,12 @@ mongoose
 const app = express()
 
 // Middleware to handle cors
-app.use(
-  cors({
-    origin: process.env.FRONT_END_URL || "http://localhost:5173",
-    credentials: true,
-  })
-)
+// app.use(
+//   cors({
+//     origin: process.env.FRONT_END_URL || "http://localhost:5173",
+//     credentials: true,
+//   })
+// )
 
 // Middleware to handle JSON object in req body
 app.use(express.json())
